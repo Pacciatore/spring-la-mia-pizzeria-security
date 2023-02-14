@@ -15,7 +15,28 @@
 	
 	<body>
 		
-		Testo
+		<header class="py-3">
+			
+			<div class="container">
+				<h1 class="text-center">Benvenuto nella mia pizzeria!</h1>
+			</div>
+			
+		</header>
+		
+		<main>
+			
+			<div class="container">
+				
+				<!-- Messaggio in caso di db vuoto -->
+				<div th:if="${pizzas.size() == 0}">
+					
+					<h1 class="text-danger text-center pt-5">Non ci sono pizze nel database!</h1>
+
+				</div>
+				
+			</div>
+			
+		</main>
 		
 	</body>
 	
