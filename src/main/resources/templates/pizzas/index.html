@@ -34,6 +34,33 @@
 
 				</div>
 				
+				<!-- Caso di db popolato -->
+				<div th:unless="${pizzas.size() == 0}">
+					
+					<div class="d-flex flex-column">
+						
+						<div class="col-12 d-flex text-center">
+							
+							<h4 class="col-3 border m-0 py-2">Immagine</h4>
+							<h4 class="col-3 border m-0 py-2">Nome</h4>
+							<h4 class="col-3 border m-0 py-2">Descrizione</h4>
+							<h4 class="col-3 border m-0 py-2">Prezzo</h4>
+							
+						</div>
+						
+						<div th:each="pizza : ${pizzas}" class="col-12 d-flex">
+							
+							<div class="col-3 border p-2">[[${pizza.imgUrl}]]</div>
+							<div class="col-3 border p-2">[[${pizza.name}]]</div>
+							<div class="col-3 border p-2">[[${pizza.description}]]</div>
+							<div class="col-3 border p-2">[[${pizza.price}]]</div>
+							
+						</div>
+						
+					</div>
+					
+				</div>
+				
 			</div>
 			
 		</main>
