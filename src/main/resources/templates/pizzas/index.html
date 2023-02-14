@@ -50,10 +50,12 @@
 						
 						<div th:each="pizza : ${pizzas}" class="col-12 d-flex">
 							
-							<div class="col-3 border p-2">[[${pizza.imgUrl}]]</div>
+							<div class="col-3 border p-2"> 
+								<div class="w-100"> <img class="img-fluid" th:src="${pizza.imgUrl}" th:alt="${pizza.name}"> </div> 
+							</div>
 							<div class="col-3 border p-2">[[${pizza.name}]]</div>
 							<div class="col-3 border p-2">[[${pizza.description}]]</div>
-							<div class="col-3 border p-2">[[${pizza.price}]]</div>
+							<div class="col-3 border p-2">[[${pizza.price}]]€</div>
 							
 						</div>
 						
