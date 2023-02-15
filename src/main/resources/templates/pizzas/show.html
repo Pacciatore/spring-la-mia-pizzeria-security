@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xlmns="https://thymeleaf.org">
+
+<head>
+
+	<th:block th:replace="~{fragments/head :: personal-head}" />
+
+</head>
+
+<body>
+
+	<header class="py-3">
+		<h1 th:text="${pizza.name}" class="text-center"></h1>
+	</header>
+
+</body>
+
+</html>
