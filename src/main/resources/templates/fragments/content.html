@@ -19,7 +19,7 @@
                 <h4 class="card-title">[[${element.name}]]</h4>
                 <div class="card-subtitle mb-2 text-success">[[${element.price}]]€</div>
                 <div class="card-text">[[${element.description}]]</div>
-
+                <a th:href="@{'pizzas/' + ${element.id}}" class="stretched-link"></a>
             </div>
 
         </div>
