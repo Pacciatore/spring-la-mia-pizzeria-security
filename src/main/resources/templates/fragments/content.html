@@ -1,8 +1,40 @@
+<!-- DB vuoto -->
 <th:block th:fragment="empty-db(list)">
-    <!-- Messaggio in caso di db vuoto -->
     <div th:if="${list.size() == 0}">
 
         <h1 class="text-danger text-center pt-5">Non ci sono pizze nel database!</h1>
+
+    </div>
+</th:block>
+
+<!-- DB popolato -->
+<th:block th:fragment="db-ok(list)">
+    <div th:unless="${list.size() == 0}">
+
+        <div class="d-flex flex-column">
+
+            <div class="col-12 d-flex text-center">
+
+                <h4 class="col-3 border m-0 py-2">Immagine</h4>
+                <h4 class="col-3 border m-0 py-2">Nome</h4>
+                <h4 class="col-3 border m-0 py-2">Descrizione</h4>
+                <h4 class="col-3 border m-0 py-2">Prezzo</h4>
+
+            </div>
+
+            <div th:each="element : ${list}" class="col-12 d-flex">
+
+                <div class="col-3 border p-2">
+                    <div class="w-100"> <img class="img-fluid" th:src="${element.imgUrl}" th:alt="${element.name}">
+                    </div>
+                </div>
+                <div class="col-3 border p-2">[[${element.name}]]</div>
+                <div class="col-3 border p-2">[[${element.description}]]</div>
+                <div class="col-3 border p-2">[[${element.price}]]€</div>
+
+            </div>
+
+        </div>
 
     </div>
 </th:block>
