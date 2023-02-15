@@ -17,6 +17,11 @@
 
 		<div class="container">
 
+			<form action="" method="get" class="py-3">
+				<input class="form-control col-4" type="text" name="pizza" id="pizzaQuery"
+					placeholder="Inserire pizza da ricercare...">
+			</form>
+
 			<!-- Messaggio in caso di db vuoto -->
 			<div th:replace="~{fragments/content :: empty-db(${pizzas})}"></div>
 
