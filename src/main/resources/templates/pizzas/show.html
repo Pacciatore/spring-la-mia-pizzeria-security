@@ -7,11 +7,15 @@
 
 </head>
 
-<body>
+<body style="height: 100vh;" class="d-flex flex-column justify-content-between py-3">
 
-	<header class="py-3">
+	<header>
 		<h1 th:text="${pizza.name}" class="text-center"></h1>
 	</header>
+
+	<footer class="container d-flex flex-row-reverse">
+		<a th:href="@{/pizzas}" class="btn btn-primary">Torna all'indice</a>
+	</footer>
 
 </body>
 
