@@ -1,72 +1,62 @@
 <!DOCTYPE html>
 <html xlmns="https://thymeleaf.org">
-	
-	<head>
-			<meta charset="UTF-8">
-		    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-		    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		
-			<!-- Link Thymeleaf per Bootstrap -->
-			<link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css}" />
-			
-			<title>La Mia Pizzeria</title>
-			
-	</head>
-	
-	<body>
-		
-		<header class="py-3">
-			
-			<div class="container">
-				<h1 class="text-center">Benvenuto nella mia pizzeria!</h1>
-			</div>
-			
-		</header>
-		
-		<main>
-			
-			<div class="container">
-				
-				<!-- Messaggio in caso di db vuoto -->
-				<div th:if="${pizzas.size() == 0}">
-					
-					<h1 class="text-danger text-center pt-5">Non ci sono pizze nel database!</h1>
+
+<head>
+
+	<link th:replace="~{fragments/head :: personal-head}">
+
+</head>
+
+<body>
+
+	<header class="py-3">
+
+		<div class="container">
+			<h1 class="text-center">Benvenuto nella mia pizzeria!</h1>
+		</div>
+
+	</header>
+
+	<main>
+
+		<div class="container">
+
+			<div th:replace="~{fragments/content :: empty-db(${pizzas})}"></div>
+
+			<!-- Caso di db popolato -->
+			<div th:unless="${pizzas.size() == 0}">
+
+				<div class="d-flex flex-column">
+
+					<div class="col-12 d-flex text-center">
+
+						<h4 class="col-3 border m-0 py-2">Immagine</h4>
+						<h4 class="col-3 border m-0 py-2">Nome</h4>
+						<h4 class="col-3 border m-0 py-2">Descrizione</h4>
+						<h4 class="col-3 border m-0 py-2">Prezzo</h4>
+
+					</div>
+
+					<div th:each="pizza : ${pizzas}" class="col-12 d-flex">
+
+						<div class="col-3 border p-2">
+							<div class="w-100"> <img class="img-fluid" th:src="${pizza.imgUrl}" th:alt="${pizza.name}">
+							</div>
+						</div>
+						<div class="col-3 border p-2">[[${pizza.name}]]</div>
+						<div class="col-3 border p-2">[[${pizza.description}]]</div>
+						<div class="col-3 border p-2">[[${pizza.price}]]€</div>
+
+					</div>
 
 				</div>
-				
-				<!-- Caso di db popolato -->
-				<div th:unless="${pizzas.size() == 0}">
-					
-					<div class="d-flex flex-column">
-						
-						<div class="col-12 d-flex text-center">
-							
-							<h4 class="col-3 border m-0 py-2">Immagine</h4>
-							<h4 class="col-3 border m-0 py-2">Nome</h4>
-							<h4 class="col-3 border m-0 py-2">Descrizione</h4>
-							<h4 class="col-3 border m-0 py-2">Prezzo</h4>
-							
-						</div>
-						
-						<div th:each="pizza : ${pizzas}" class="col-12 d-flex">
-							
-							<div class="col-3 border p-2"> 
-								<div class="w-100"> <img class="img-fluid" th:src="${pizza.imgUrl}" th:alt="${pizza.name}"> </div> 
-							</div>
-							<div class="col-3 border p-2">[[${pizza.name}]]</div>
-							<div class="col-3 border p-2">[[${pizza.description}]]</div>
-							<div class="col-3 border p-2">[[${pizza.price}]]€</div>
-							
-						</div>
-						
-					</div>
-					
-				</div>
-				
+
 			</div>
-			
-		</main>
-		
-	</body>
-	
+
+		</div>
+
+	</main>
+
+</body>
+
 </html>
