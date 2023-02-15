@@ -1,0 +1,8 @@
+<th:block th:fragment="empty-db(list)">
+    <!-- Messaggio in caso di db vuoto -->
+    <div th:if="${list.size() == 0}">
+
+        <h1 class="text-danger text-center pt-5">Non ci sono pizze nel database!</h1>
+
+    </div>
+</th:block>
