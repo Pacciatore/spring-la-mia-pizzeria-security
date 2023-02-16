@@ -16,13 +16,19 @@
 
             <div class="col-4">
                 <label class="form-label" for="pizzaName">Nome</label>
-                <input class="form-control" type="text" name="name" id="pizzaName">
+                <input class="form-control" type="text" name="name" id="pizzaName" th:errorClass="is-invalid">
+                <div th:if="${#fields.hasErrors('name')}" class="invalid-feedback">
+                    <p th:each="err : ${#fields.errors('name')}" th:text="${err}"></p>
+                </div>
             </div>
 
             <div class="col-4">
                 <label class="form-label" for="pizzaDescription">Descrizione</label>
                 <textarea class="form-control" name="description" id="pizzaDescription" rows="5"
-                    placeholder="(Facoltativo)"></textarea>
+                    placeholder="(Facoltativo)" th:errorClass="is-invalid"></textarea>
+                <div th:if="${#fields.hasErrors('description')}" class="invalid-feedback">
+                    <p th:each="err : ${#fields.errors('description')}" th:text="${err}"></p>
+                </div>
             </div>
 
             <div class="col-4">
@@ -32,7 +38,11 @@
 
             <div class="col-4">
                 <label class="form-label" for="pizzaPrice">Prezzo</label>
-                <input class="form-control" type="number" step=".01" min="0" name="price" id="pizzaPrice">
+                <input class="form-control" type="number" step=".01" min="0" name="price" id="pizzaPrice"
+                    th:errorClass="is-invalid">
+                <div th:if="${#fields.hasErrors('price')}" class="invalid-feedback">
+                    <p th:each="err : ${#fields.errors('price')}" th:text="${err}"></p>
+                </div>
             </div>
 
             <div class="col-12 d-flex flex-row-reverse gap-2 py-3">
