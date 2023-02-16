@@ -1,3 +1,10 @@
+<!-- Header contente h1 del titolo della pagina -->
+<th:block th:fragment="title(title)">
+    <header class="py-3">
+        <h1 class="text-center" th:text="${title}"></h1>
+    </header>
+</th:block>
+
 <!-- DB vuoto -->
 <th:block th:fragment="empty-db(list)">
     <div th:if="${list.size() == 0}">
