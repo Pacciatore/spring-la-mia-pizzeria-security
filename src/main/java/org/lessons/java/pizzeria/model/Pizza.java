@@ -8,6 +8,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "pizzas")
@@ -17,12 +21,19 @@ public class Pizza {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	@NotNull(message = "Il nome è obbligatorio!")
+	@NotEmpty(message = "Il nome non può essere vuoto!")
 	private String name;
+
+	@Column(nullable = true)
+	@Size(max = 150, message = "Non puoi superare i 150 caratteri!")
 	private String description;
 
 	@Column(name = "image", nullable = true)
 	private String imgUrl;
 
+	@NotNull(message = "Il prezzo è obbligatorio!")
+	@DecimalMin("0.01")
 	private BigDecimal price;
 
 	public Integer getId() {
