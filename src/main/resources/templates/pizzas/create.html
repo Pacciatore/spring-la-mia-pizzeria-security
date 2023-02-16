@@ -11,7 +11,7 @@
 
     <main>
 
-        <form class="container d-flex flex-column align-items-center py-3" id="pizza-form" th:object="${pizza}"
+        <form class="container d-flex flex-column align-items-center gap-2 py-3" id="pizza-form" th:object="${pizza}"
             th:action="@{/pizzas/create}" method="post">
 
             <div class="col-4">
@@ -23,6 +23,11 @@
                 <label class="form-label" for="pizzaDescription">Descrizione</label>
                 <textarea class="form-control" name="description" id="pizzaDescription" rows="5"
                     placeholder="(Facoltativo)"></textarea>
+            </div>
+
+            <div class="col-4">
+                <label class="form-label" for="pizzaImgUrl">Link all'immagine</label>
+                <input class="form-control" type="url" name="imgUrl" id="pizzaImgUrl" placeholder="(Facoltativo)">
             </div>
 
             <div class="col-4">
