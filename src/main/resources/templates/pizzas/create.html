@@ -14,6 +14,7 @@
         <form class="container d-flex flex-column align-items-center gap-2 py-3" id="pizza-form" th:object="${pizza}"
             th:action="@{/pizzas/create}" method="post">
 
+            <!-- Nome Pizza -->
             <div class="col-4">
                 <label class="form-label" for="pizzaName">Nome</label>
                 <input class="form-control" type="text" name="name" id="pizzaName" th:errorClass="is-invalid">
@@ -22,6 +23,7 @@
                 </div>
             </div>
 
+            <!-- Descrizione Pizza -->
             <div class="col-4">
                 <label class="form-label" for="pizzaDescription">Descrizione</label>
                 <textarea class="form-control" name="description" id="pizzaDescription" rows="5"
@@ -31,11 +33,13 @@
                 </div>
             </div>
 
+            <!-- ImgURL Pizza -->
             <div class="col-4">
                 <label class="form-label" for="pizzaImgUrl">Link all'immagine</label>
                 <input class="form-control" type="url" name="imgUrl" id="pizzaImgUrl" placeholder="(Facoltativo)">
             </div>
 
+            <!-- Prezzo Pizza -->
             <div class="col-4">
                 <label class="form-label" for="pizzaPrice">Prezzo</label>
                 <input class="form-control" type="number" step=".01" min="0" name="price" id="pizzaPrice"
@@ -45,6 +49,7 @@
                 </div>
             </div>
 
+            <!-- Button navigation -->
             <div class="col-12 d-flex flex-row-reverse gap-2 py-3">
 
                 <a th:href="@{/pizzas}" class="btn btn-primary">Torna all'indice</a>
