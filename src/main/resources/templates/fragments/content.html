@@ -18,7 +18,7 @@
 <th:block th:fragment="db-ok(list)">
     <div th:unless="${list.size() == 0}" class="d-flex flex-wrap gap-2 py-3">
 
-        <div th:each="element : ${list}" class="col-3 card m-auto">
+        <div th:each="element : ${list}" class="col-3 card m-auto text-black">
 
             <img th:if="${element.imgUrl.isEmpty()}" class="card-img-top"
                 src="https://cdn-icons-png.flaticon.com/512/2094/2094661.png" th:alt="${element.name}"
