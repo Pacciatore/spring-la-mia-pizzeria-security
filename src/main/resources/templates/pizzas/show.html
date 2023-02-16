@@ -9,9 +9,7 @@
 
 <body style="height: 100vh;" class="d-flex flex-column justify-content-between py-3">
 
-	<header>
-		<h1 th:text="${pizza.name}" class="text-center"></h1>
-	</header>
+	<header th:replace="~{fragments/content :: title(${pizza.name})}"></header>
 
 	<main class="flex-grow-1 text-center">
 		<div class="container py-3">
