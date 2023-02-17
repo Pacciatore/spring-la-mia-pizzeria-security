@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="https://thymeleaf.org">
+
+<head>
+    <th:block th:replace="~{fragments/head :: personal-head}"></th:block>
+</head>
+
+<body class="bg-dark text-white">
+
+    <header th:replace="~{fragments/content :: title('Aggiungi una pizza')}"></header>
+
+    <main>
+
+        <form class="container d-flex flex-column align-items-center gap-2 py-3" id="pizza-form" th:object="${pizza}"
+            th:action="@{/pizzas/edit/{id}(id=${pizza.id})}" method="post">
+
+            <!-- Nome Pizza -->
+            <div class="col-4">
+                <label class="form-label" for="pizzaName">Nome</label>
+                <input class="form-control" type="text" th:field="*{name}" id="pizzaName" th:errorClass="is-invalid">
+                <div th:if="${#fields.hasErrors('name')}" class="invalid-feedback">
+                    <p th:each="err : ${#fields.errors('name')}" th:text="${err}"></p>
+                </div>
+            </div>
+
+            <!-- Descrizione Pizza -->
+            <div class="col-4">
+                <label class="form-label" for="pizzaDescription">Descrizione</label>
+                <textarea class="form-control" th:field="*{description}" id="pizzaDescription" rows="5"
+                    placeholder="(Facoltativo)" th:errorClass="is-invalid"></textarea>
+                <div th:if="${#fields.hasErrors('description')}" class="invalid-feedback">
+                    <p th:each="err : ${#fields.errors('description')}" th:text="${err}"></p>
+                </div>
+            </div>
+
+            <!-- ImgURL Pizza -->
+            <div class="col-4">
+                <label class="form-label" for="pizzaImgUrl">Link all'immagine</label>
+                <input class="form-control" type="url" th:field="*{imgUrl}" id="pizzaImgUrl"
+                    placeholder="(Facoltativo)">
+            </div>
+
+            <!-- Prezzo Pizza -->
+            <div class="col-4">
+                <label class="form-label" for="pizzaPrice">Prezzo</label>
+                <input class="form-control" type="number" step=".01" min="0" th:field="*{price}" id="pizzaPrice"
+                    th:errorClass="is-invalid">
+                <div th:if="${#fields.hasErrors('price')}" class="invalid-feedback">
+                    <p th:each="err : ${#fields.errors('price')}" th:text="${err}"></p>
+                </div>
+            </div>
+
+            <!-- Button navigation -->
+            <div class="col-12 d-flex flex-row-reverse gap-2 py-3">
+
+                <a th:href="@{/pizzas}" class="btn btn-primary">Torna all'indice</a>
+
+                <a th:href="@{/pizzas/{id}(id=${pizza.id})}" class="btn btn-light">Torna alla pizza</a>
+
+                <input class="btn btn-success" type="submit" value="Aggiorna pizza">
+
+            </div>
+
+        </form>
+
+    </main>
+
+</body>
+
+</html>

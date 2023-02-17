@@ -30,8 +30,12 @@
 		</div>
 	</main>
 
-	<footer class="container d-flex flex-row-reverse">
+	<footer class="container d-flex flex-row-reverse gap-2">
+
 		<a th:href="@{/pizzas}" class="btn btn-primary">Torna all'indice</a>
+
+		<a th:href="@{/pizzas/edit/{id}(id=${pizza.id})}" class="btn btn-success">Modifica pizza</a>
+
 	</footer>
 
 </body>

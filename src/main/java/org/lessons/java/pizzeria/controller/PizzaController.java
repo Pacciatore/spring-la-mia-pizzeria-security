@@ -45,6 +45,25 @@ public class PizzaController {
 		return "pizzas/show";
 	}
 
+	@GetMapping("/edit/{id}")
+	public String edit(@PathVariable("id") Integer id, Model model) {
+		Pizza pizza = pizzaRepository.getReferenceById(id);
+		model.addAttribute("pizza", pizza);
+
+		return "pizzas/edit";
+	}
+
+	@PostMapping("/edit/{id}")
+	public String update(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult, Model model) {
+
+		if (bindingResult.hasErrors())
+			return "pizzas/edit";
+
+		pizzaRepository.save(formPizza);
+
+		return "redirect:/";
+	}
+
 	@GetMapping("/create")
 	public String create(Model model) {
 		Pizza pizza = new Pizza();
