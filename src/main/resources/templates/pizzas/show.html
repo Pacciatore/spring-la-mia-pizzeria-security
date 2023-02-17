@@ -30,11 +30,17 @@
 		</div>
 	</main>
 
-	<footer class="container d-flex flex-row-reverse gap-2">
+	<footer class="container d-flex justify-content-between">
 
-		<a th:href="@{/pizzas}" class="btn btn-primary">Torna all'indice</a>
+		<form action="#" th:action="@{/pizzas/delete/{id}(id=${pizza.id})}" method="post">
+			<button class="btn btn-danger" type="submit">Elimina</button>
+		</form>
 
-		<a th:href="@{/pizzas/edit/{id}(id=${pizza.id})}" class="btn btn-success">Modifica pizza</a>
+		<div class="d-flex flex-row-reverse gap-2">
+			<a th:href="@{/pizzas}" class="btn btn-primary">Torna all'indice</a>
+
+			<a th:href="@{/pizzas/edit/{id}(id=${pizza.id})}" class="btn btn-success">Modifica pizza</a>
+		</div>
 
 	</footer>
 
