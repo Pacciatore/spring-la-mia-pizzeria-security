@@ -10,7 +10,17 @@ public class ErrorController {
 
 	@GetMapping
 	public String index() {
-		return "error/404";
+		return "error";
+	}
+
+	@GetMapping("/{id}")
+	public String show() {
+		return "error";
+	}
+
+	@GetMapping("/edit/{id}")
+	public String edit() {
+		return "error";
 	}
 
 }
