@@ -12,7 +12,7 @@ import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
-public class SpecialOffers {
+public class SpecialOffer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
