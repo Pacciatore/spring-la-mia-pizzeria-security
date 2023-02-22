@@ -13,6 +13,8 @@
 
 	<main class="flex-grow-1 text-center">
 		<div class="container py-3">
+
+			<!-- Immagine -->
 			<div class="img-thumbnail m-auto" style="max-width: 30vw;">
 
 				<img th:if="${pizza.imgUrl.isEmpty()}" class="card-img-top"
@@ -23,13 +25,24 @@
 
 			</div>
 
+			<!-- Descrizione -->
 			<div th:text="${pizza.description}" class="py-2"></div>
 
+			<!-- Prezzo -->
 			<div th:text="${pizza.price} + '€'" class="text-success"></div>
+
+			<!-- Offerte -->
+			<div class="pt-2">
+				<h3>Offerte attive:</h3>
+				<p th:each="offer : ${pizza.specialOffers}"><a class="text-decoration-none"
+						th:href="@{|/special-offers/edit/${offer.id}|}" th:text="${offer.name}"></a></p>
+			</div>
 
 		</div>
 	</main>
 
+
+	<!-- Button Navigation -->
 	<footer class="container d-flex justify-content-between">
 
 		<form action="#" th:action="@{/pizzas/delete/{id}(id=${pizza.id})}" method="post">
