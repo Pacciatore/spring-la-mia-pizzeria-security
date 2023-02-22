@@ -20,7 +20,8 @@
 
             <!-- Caso di db popolato -->
             <ul>
-                <li th:each="offer : ${specialOffers}" th:text="${offer.name}"></li>
+                <li th:each="offer : ${specialOffers}"><a
+                        th:href="@{|/special-offers/edit/${offer.id}|}">[[${offer.name}]]</a></li>
             </ul>
 
         </div>
