@@ -38,7 +38,7 @@ public class Pizza {
 	@DecimalMin("0.01")
 	private BigDecimal price;
 
-	@OneToMany
+	@OneToMany(mappedBy = "pizza")
 	private List<SpecialOffers> specialOffers;
 
 	public List<SpecialOffers> getSpecialOffers() {
