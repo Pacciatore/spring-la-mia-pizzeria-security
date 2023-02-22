@@ -16,10 +16,12 @@
         <div class="container">
 
             <!-- Messaggio in caso di db vuoto -->
-            <div th:replace="~{fragments/content :: empty-db(${specialOffer})}"></div>
+            <div th:replace="~{fragments/content :: empty-db(${specialOffers})}"></div>
 
             <!-- Caso di db popolato -->
-            <div th:replace="~{fragments/content :: db-ok(${specialOffer})}"></div>
+            <ul>
+                <li th:each="offer : ${specialOffers}" th:text="${offer.name}"></li>
+            </ul>
 
         </div>
 
@@ -27,7 +29,7 @@
 
     <footer>
         <div class="container d-flex flex-row-reverse py-3">
-            <a class="btn btn-primary" th:href="@{/special-offers/create}">Crea offerta speciale</a>
+            <a class="btn btn-primary" th:href="@{/}">Torna all'indice delle pizze</a>
         </div>
     </footer>
 
