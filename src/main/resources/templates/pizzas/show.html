@@ -41,7 +41,8 @@
 
 			<a th:href="@{/pizzas/edit/{id}(id=${pizza.id})}" class="btn btn-success">Modifica pizza</a>
 
-			<a th:href="@{/special-offers/create}" class="btn btn-warning">Crea offerta speciale</a>
+			<a th:href="@{|/special-offers/create?pizzaId=${pizza.id}|}" class="btn btn-warning">Crea offerta
+				speciale</a>
 
 		</div>
 
