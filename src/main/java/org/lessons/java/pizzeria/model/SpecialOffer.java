@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -18,15 +19,16 @@ public class SpecialOffer {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotNull
+	@NotNull(message = "Il campo è obbligatorio!")
+	@NotEmpty(message = "Il nome non può essere vuoto!")
 	private String name;
 
-	@NotNull
-	@FutureOrPresent(message = "Offer must begin now or in the future!")
+	@NotNull(message = "Il campo è obbligatorio!")
+	@FutureOrPresent(message = "L'offerta deve iniziare da oggi in avanti!")
 	private LocalDate offerBegin;
 
-	@NotNull
-	@Future(message = "Offer must end in the future!")
+	@NotNull(message = "Il campo è obbligatorio!")
+	@Future(message = "L'offerta deve finire nel futuro!")
 	private LocalDate offerEnd;
 
 	@NotNull
