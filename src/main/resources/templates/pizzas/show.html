@@ -32,7 +32,11 @@
 			<div th:text="${pizza.price} + '€'" class="text-success"></div>
 
 			<!-- Offerte -->
-			<div class="pt-2">
+			<div th:if="${pizza.specialOffers.size() == 0}" class="pt-2">
+				<h3>Non ci sono offerte disponibili</h3>
+			</div>
+
+			<div th:unless="${pizza.specialOffers.size() == 0}" class="pt-2">
 				<h3>Offerte attive:</h3>
 				<p th:each="offer : ${pizza.specialOffers}"><a class="text-decoration-none"
 						th:href="@{|/special-offers/edit/${offer.id}|}" th:text="${offer.name}"></a></p>
