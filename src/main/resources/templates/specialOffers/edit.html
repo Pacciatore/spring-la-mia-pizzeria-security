@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="https://thymeleaf.org">
+
+<head>
+    <th:block th:replace="~{fragments/head :: personal-head}"></th:block>
+</head>
+
+<body class="bg-dark text-white">
+
+    <header th:replace="~{fragments/content :: title('Modifica offerta speciale')}"></header>
+
+    <main>
+
+        <form class="container d-flex flex-column align-items-center gap-2 py-3" id="offer-form"
+            th:object="${specialOffer}" th:action="@{/special-offers/edit/{id}(id=${specialOffer.id})}" method="post">
+
+            <!-- Passaggio della pizza collegata -->
+            <input type="hidden" th:field="${specialOffer.pizza}">
+
+            <!-- Nome Offerta -->
+            <div class="col-4">
+                <label class="form-label" for="offerName">Nome</label>
+                <input class="form-control" type="text" th:field="*{name}" id="offerName" th:errorClass="is-invalid">
+                <div th:if="${#fields.hasErrors('name')}" class="invalid-feedback">
+                    <p th:each="err : ${#fields.errors('name')}" th:text="${err}"></p>
+                </div>
+            </div>
+
+            <!-- Data Inizio Offerta -->
+            <div class="col-4">
+                <label class="form-label" for="offerBegin">Inizio offerta</label>
+                <input class="form-control" type="date" th:field="*{offerBegin}" id="offerBegin"
+                    th:errorClass="is-invalid">
+                <div th:if="${#fields.hasErrors('offerBegin')}" class="invalid-feedback">
+                    <p th:each="err : ${#fields.errors('offerBegin')}" th:text="${err}"></p>
+                </div>
+            </div>
+
+            <!-- Data Fine Offerta -->
+            <div class="col-4">
+                <label class="form-label" for="offerEnd">Inizio offerta</label>
+                <input class="form-control" type="date" th:field="*{offerEnd}" id="offerEnd" th:errorClass="is-invalid">
+                <div th:if="${#fields.hasErrors('offerEnd')}" class="invalid-feedback">
+                    <p th:each="err : ${#fields.errors('offerEnd')}" th:text="${err}"></p>
+                </div>
+
+            </div>
+
+            <!-- Button navigation -->
+            <div class="col-12 d-flex flex-row-reverse gap-2 py-3">
+
+                <a th:href="@{/special-offers}" class="btn btn-primary">Torna all'indice</a>
+
+                <input class="btn btn-success" type="submit" value="Modifica offerta">
+
+            </div>
+
+        </form>
+
+    </main>
+
+</body>
+
+</html>
