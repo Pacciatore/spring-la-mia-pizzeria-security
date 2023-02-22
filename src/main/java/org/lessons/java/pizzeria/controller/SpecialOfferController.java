@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -59,6 +60,26 @@ public class SpecialOfferController {
 			Model model) {
 		if (bindingResult.hasErrors())
 			return "specialOffers/create";
+
+		offerRepo.save(formOffer);
+
+		return "redirect:/";
+	}
+
+	@GetMapping("/edit/{id}")
+	public String edit(@PathVariable("id") Long id, Model model) {
+		SpecialOffer offer = offerRepo.getReferenceById(id);
+		model.addAttribute("specialOffer", offer);
+
+		return "specialOffers/edit";
+	}
+
+	@PostMapping("/edit/{id}")
+	public String update(@Valid @ModelAttribute("specialOffer") SpecialOffer formOffer, BindingResult bindingResult,
+			Model model) {
+
+		if (bindingResult.hasErrors())
+			return "specialOffers/edit";
 
 		offerRepo.save(formOffer);
 
