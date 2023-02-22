@@ -25,10 +25,10 @@ import jakarta.validation.Valid;
 public class SpecialOfferController {
 
 	@Autowired
-	PizzaRepository pizzaRepo;
+	private PizzaRepository pizzaRepo;
 
 	@Autowired
-	SpecialOfferRepository offerRepo;
+	private SpecialOfferRepository offerRepo;
 
 	@GetMapping
 	public String index(Model model) {
