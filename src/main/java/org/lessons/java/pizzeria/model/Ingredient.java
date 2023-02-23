@@ -2,6 +2,9 @@ package org.lessons.java.pizzeria.model;
 
 import java.util.List;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,6 +25,7 @@ public class Ingredient {
 	private String name;
 
 	@ManyToMany(mappedBy = "ingredients")
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private List<Pizza> pizzas;
 
 	public Long getId() {
