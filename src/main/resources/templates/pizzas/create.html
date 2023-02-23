@@ -50,6 +50,17 @@
                 </div>
             </div>
 
+            <!-- Ingredienti Pizza -->
+            <div class="col-4">
+                <h3>Ingredienti:</h3>
+                <div th:each="ingredient : ${ingredientsList}" class="form-check">
+                    <input type="checkbox" class="form-check-input" th:value="${ingredient.id}"
+                        th:field="*{ingredients}" th:id="|ingredient_${ingredient.id}">
+                    <label class="form-check-label" th:text="${ingredient.name}"
+                        th:for="|category_${ingredient.id}"></label>
+                </div>
+            </div>
+
             <!-- Button navigation -->
             <div class="col-12 d-flex flex-row-reverse gap-2 py-3">
 
