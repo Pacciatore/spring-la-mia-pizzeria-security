@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xlmns="https://thymeleaf.org">
+
+<head>
+
+    <th:block th:replace="~{fragments/head :: personal-head}" />
+
+</head>
+
+<body class="bg-dark text-white">
+
+    <header th:replace="~{fragments/content :: title('Pizzeria da Pedro')}"></header>
+
+    <main>
+
+        <div class="container">
+
+            <!-- Messaggio in caso di db vuoto -->
+            <div th:replace="~{fragments/content :: empty-db(${ingredients})}"></div>
+
+            <!-- Caso di db popolato -->
+            <ul class="list-unstyled">
+                <li th:each="ingredient : ${ingredients}">
+                    <a class="fs-4 link-info" href="#">[[${ingredient.name}]]</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="container d-flex flex-row-reverse py-3">
+            <a class="btn btn-primary" th:href="@{/}">Torna all'indice delle pizze</a>
+        </div>
+    </footer>
+
+</body>
+
+
+</html>
