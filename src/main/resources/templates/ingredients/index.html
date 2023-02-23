@@ -21,7 +21,8 @@
             <!-- Caso di db popolato -->
             <ul class="list-unstyled">
                 <li th:each="ingredient : ${ingredients}">
-                    <a class="fs-4 link-info" href="#">[[${ingredient.name}]]</a>
+                    <a class="fs-4 link-info"
+                        th:href="@{|/ingredients/edit/${ingredient.id}|}">[[${ingredient.name}]]</a>
                 </li>
             </ul>
 
