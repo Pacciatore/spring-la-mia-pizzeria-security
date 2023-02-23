@@ -53,7 +53,7 @@ public class PizzaController {
 	@GetMapping("/edit/{id}")
 	public String edit(@PathVariable("id") Integer id, Model model) {
 		Pizza pizza = pizzaRepository.getReferenceById(id);
-		List<Ingredient> ingredients = ingredientRepository.findAll();
+		List<Ingredient> ingredients = ingredientRepository.findAllByOrderByName();
 
 		model.addAttribute("pizza", pizza);
 		model.addAttribute("ingredientsList", ingredients);
@@ -66,7 +66,7 @@ public class PizzaController {
 
 		// TODO: Vedi se c'è un modo migliore
 		if (bindingResult.hasErrors()) {
-			model.addAttribute("ingredientsList", ingredientRepository.findAll());
+			model.addAttribute("ingredientsList", ingredientRepository.findAllByOrderByName());
 			return "pizzas/edit";
 		}
 
@@ -79,7 +79,7 @@ public class PizzaController {
 	public String create(Model model) {
 		Pizza pizza = new Pizza();
 
-		List<Ingredient> ingredients = ingredientRepository.findAll();
+		List<Ingredient> ingredients = ingredientRepository.findAllByOrderByName();
 
 		model.addAttribute("pizza", pizza);
 		model.addAttribute("ingredientsList", ingredients);
@@ -91,7 +91,7 @@ public class PizzaController {
 	public String store(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult, Model model) {
 
 		if (bindingResult.hasErrors()) {
-			model.addAttribute("ingredientsList", ingredientRepository.findAll());
+			model.addAttribute("ingredientsList", ingredientRepository.findAllByOrderByName());
 			return "pizzas/create";
 		}
 
