@@ -11,6 +11,11 @@
 
     <main>
 
+        <div class="container text-center py-2">
+            <h3 class="fw-normal">Pizza collegata: <span class="fw-bold text-info">[[${specialOffer.pizza.name}]]</span>
+            </h3>
+        </div>
+
         <form class="container d-flex flex-column align-items-center gap-2 py-3" id="offer-form"
             th:object="${specialOffer}" th:action="@{/special-offers/edit/{id}(id=${specialOffer.id})}" method="post">
 
