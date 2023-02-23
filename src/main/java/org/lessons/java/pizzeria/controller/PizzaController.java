@@ -64,8 +64,11 @@ public class PizzaController {
 	@PostMapping("/edit/{id}")
 	public String update(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult, Model model) {
 
-		if (bindingResult.hasErrors())
+		// TODO: Vedi se c'è un modo migliore
+		if (bindingResult.hasErrors()) {
+			model.addAttribute("ingredientsList", ingredientRepository.findAll());
 			return "pizzas/edit";
+		}
 
 		pizzaRepository.save(formPizza);
 
