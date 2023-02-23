@@ -20,9 +20,15 @@
 
             <!-- Caso di db popolato -->
             <ul class="list-unstyled">
-                <li th:each="ingredient : ${ingredients}">
+                <li th:each="ingredient : ${ingredients}" class="d-flex justify-content-between pb-2">
                     <a class="fs-4 link-info"
                         th:href="@{|/ingredients/edit/${ingredient.id}|}">[[${ingredient.name}]]</a>
+
+                    <form action="#" th:action="@{|/ingredients/delete/${ingredient.id}|}" method="post">
+                        <button class="btn btn-danger" type="submit">Elimina</button>
+                    </form>
+
+
                 </li>
             </ul>
 
