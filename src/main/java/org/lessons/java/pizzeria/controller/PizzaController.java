@@ -90,8 +90,10 @@ public class PizzaController {
 	@PostMapping("/create")
 	public String store(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult, Model model) {
 
-		if (bindingResult.hasErrors())
+		if (bindingResult.hasErrors()) {
+			model.addAttribute("ingredientsList", ingredientRepository.findAll());
 			return "pizzas/create";
+		}
 
 		pizzaRepository.save(formPizza);
 
