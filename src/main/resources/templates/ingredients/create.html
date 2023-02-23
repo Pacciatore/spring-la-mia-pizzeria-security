@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="https://thymeleaf.org">
+
+<head>
+    <th:block th:replace="~{fragments/head :: personal-head}"></th:block>
+</head>
+
+<body class="bg-dark text-white">
+
+    <header th:replace="~{fragments/content :: title('Crea ingrediente')}"></header>
+
+    <main>
+
+        <form class="container d-flex flex-column align-items-center gap-2 py-3" id="ingredient-form"
+            th:object="${ingredient}" th:action="@{/ingredients/create}" method="post">
+
+            <!-- Nome Offerta -->
+            <div class="col-4">
+                <label class="form-label" for="ingredientName">Nome</label>
+                <input class="form-control" type="text" th:field="*{name}" id="ingredientName"
+                    th:errorClass="is-invalid">
+                <div th:if="${#fields.hasErrors('name')}" class="invalid-feedback">
+                    <p th:each="err : ${#fields.errors('name')}" th:text="${err}"></p>
+                </div>
+            </div>
+
+            <!-- Button navigation -->
+            <div class="col-12 d-flex flex-row-reverse gap-2 py-3">
+
+                <a th:href="@{/ingredients}" class="btn btn-primary">Torna all'indice</a>
+
+                <input class="btn btn-success" type="submit" value="Crea ingrediente">
+
+            </div>
+
+        </form>
+
+    </main>
+
+</body>
+
+</html>
