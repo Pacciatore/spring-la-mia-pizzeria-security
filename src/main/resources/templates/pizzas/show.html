@@ -15,14 +15,27 @@
 		<div class="container py-3">
 
 			<!-- Immagine -->
-			<div class="img-thumbnail m-auto" style="max-width: 30vw;">
+			<div class="card bg-dark">
+				<div class="row">
+					<div class="col" style="max-width: 30vw;">
 
-				<img th:if="${pizza.imgUrl.isEmpty()}" class="card-img-top" th:src="@{/images/default-pizza.png}"
-					th:alt="${pizza.name}">
+						<img th:if="${pizza.imgUrl.isEmpty()}" class="card-img-top"
+							th:src="@{/images/default-pizza.png}" th:alt="${pizza.name}">
 
-				<img th:unless="${pizza.imgUrl.isEmpty()}" class="img-fluid" th:src="${pizza.imgUrl}"
-					th:alt="${pizza.name}">
+						<img th:unless="${pizza.imgUrl.isEmpty()}" class="img-fluid" th:src="${pizza.imgUrl}"
+							th:alt="${pizza.name}">
 
+					</div>
+
+					<div class="col">
+						<div class="card-body text-start">
+							<h4>Ingredienti:</h4>
+							<p class="ps-5" th:each="ingredient : ${pizza.ingredients}" th:text="${ingredient.name}">
+							</p>
+						</div>
+					</div>
+
+				</div>
 			</div>
 
 			<!-- Descrizione -->

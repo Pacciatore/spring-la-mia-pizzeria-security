@@ -2,6 +2,6 @@
     transition: all .2s;
 }
 
-.card:hover {
+.card:not(.bg-dark):hover {
     box-shadow: 0 .125rem .95rem white !important;
 }
