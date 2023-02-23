@@ -19,9 +19,10 @@
             <div th:replace="~{fragments/content :: empty-db(${specialOffers})}"></div>
 
             <!-- Caso di db popolato -->
-            <ul>
-                <li th:each="offer : ${specialOffers}"><a
-                        th:href="@{|/special-offers/edit/${offer.id}|}">[[${offer.name}]]</a></li>
+            <ul class="list-unstyled">
+                <li th:each="offer : ${specialOffers}">
+                    <a class="fs-4 link-info" th:href="@{|/special-offers/edit/${offer.id}|}">[[${offer.name}]]</a>
+                </li>
             </ul>
 
         </div>
