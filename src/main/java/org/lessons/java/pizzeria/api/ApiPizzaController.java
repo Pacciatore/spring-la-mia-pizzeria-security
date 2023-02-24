@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -46,6 +47,18 @@ public class ApiPizzaController {
 	@PostMapping()
 	public Pizza create(@RequestBody Pizza pizza) {
 		return pizzaRepo.save(pizza);
+	}
+
+	@PutMapping("{id}")
+	public Pizza edit(@RequestBody Pizza pizza, @PathVariable(name = "id") Integer id) {
+		Pizza editedPizza = pizzaRepo.getReferenceById(id);
+
+		editedPizza.setName(pizza.getName());
+		editedPizza.setDescription(pizza.getDescription());
+		editedPizza.setImgUrl(pizza.getImgUrl());
+		editedPizza.setPrice(pizza.getPrice());
+
+		return pizzaRepo.save(editedPizza);
 	}
 
 }
