@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -19,8 +20,13 @@ public class ApiPizzaController {
 	private PizzaRepository pizzaRepo;
 
 	@GetMapping
-	public List<Pizza> index() {
-		return pizzaRepo.findAll();
+	public List<Pizza> index(@RequestParam(name = "pizza", required = false) String keyword) {
+
+		if (keyword == null || keyword.isEmpty())
+			return pizzaRepo.findAll();
+		else
+			return pizzaRepo.findByNameLike("%" + keyword + "%");
+
 	}
 
 }
