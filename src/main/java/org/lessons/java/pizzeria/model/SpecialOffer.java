@@ -2,6 +2,8 @@ package org.lessons.java.pizzeria.model;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -31,6 +33,7 @@ public class SpecialOffer {
 	@Future(message = "L'offerta deve finire nel futuro!")
 	private LocalDate offerEnd;
 
+	@JsonBackReference
 	@NotNull
 	@ManyToOne
 	private Pizza pizza;
