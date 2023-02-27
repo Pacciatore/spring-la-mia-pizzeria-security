@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xlmns="https://thymeleaf.org">
+
+<head>
+
+    <title>Pizzeria da Pedro</title>
+
+    <th:block th:replace="~{fragments/head :: personal-head}" />
+
+    <!-- Link Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- Link a js/show.js -->
+    <script type="text/javascript" th:src="@{/js/show.js}" defer></script>
+
+</head>
+
+<body class="bg-light">
+
+    <div class="container">
+
+        <header th:replace="~{fragments/content :: title('Dettaglio pizza')}"></header>
+
+        <h1 id="pizza-name"></h1>
+
+        <div class="col-4">
+            <img class="img-fluid" id="pizza-img">
+        </div>
+
+        <p id="pizza-description"></p>
+
+        <ul id="pizza-ingredients"></ul>
+
+        <p id="pizza-price"></p>
+
+    </div>
+
+    <!-- Button navigation -->
+    <footer class="container">
+        <a class="btn btn-primary" href="/">Torna alla homepage</a>
+    </footer>
+
+</body>
+
+</html>
