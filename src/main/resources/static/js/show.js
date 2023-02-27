@@ -33,3 +33,19 @@ function pizzaDetail() {
             alert('Errore durante la richiesta');
         })
 }
+
+function deletePizza() {
+    const risposta = confirm('Sei sicuro?');
+
+    if (risposta) {
+        axios.delete(`http://localhost:8080/api/pizzas/${pizzaId}`)
+            .then((result) => {
+                //ok => ricarico l'elenco dei libri
+                window.location.replace("http://localhost:8080");;
+            }).catch((result) => {
+                console.error('Errore nella richiesta', result);
+                alert('Errore durante la richiesta!');
+            });
+    }
+
+}
