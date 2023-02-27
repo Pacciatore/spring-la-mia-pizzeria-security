@@ -24,6 +24,7 @@ function pizzasList() {
                     <td>${pizza.description}</td>
                     <td><ul id="ingredients-list-${pizza.id}"></ul></td>
                     <td>${pizza.price}€</td>
+                    <td><a class="btn btn-danger" onclick="deletePizza(${pizza.id})"><i class="fa-solid fa-trash"></i></a></td>
                 </tr>`;
 
                 ingredients.forEach(ingredient => {
@@ -39,4 +40,20 @@ function pizzasList() {
             console.error('Errore nella richiesta', result);
             alert('Errore durante la richiesta');
         })
+}
+
+function deletePizza(pizzaId) {
+    const risposta = confirm('Sei sicuro?');
+
+    if (risposta) {
+        axios.delete(`http://localhost:8080/api/pizzas/${pizzaId}`)
+            .then((result) => {
+                //ok => ricarico l'elenco dei libri
+                pizzasList();
+            }).catch((result) => {
+                console.error('Errore nella richiesta', result);
+                alert('Errore durante la richiesta!');
+            });
+    }
+
 }
