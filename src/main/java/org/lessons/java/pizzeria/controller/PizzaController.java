@@ -72,7 +72,7 @@ public class PizzaController {
 
 		pizzaRepository.save(formPizza);
 
-		return "redirect:/";
+		return "redirect:/pizzas";
 	}
 
 	@GetMapping("/create")
@@ -97,14 +97,14 @@ public class PizzaController {
 
 		pizzaRepository.save(formPizza);
 
-		return "redirect:/";
+		return "redirect:/pizzas";
 	}
 
 	@PostMapping("/delete/{id}")
 	public String delete(@PathVariable("id") Integer id) {
 		pizzaRepository.deleteById(id);
 
-		return "redirect:/";
+		return "redirect:/pizzas";
 	}
 
 }
