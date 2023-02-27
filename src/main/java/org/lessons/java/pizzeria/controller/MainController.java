@@ -10,7 +10,7 @@ public class MainController {
 
 	@GetMapping
 	public String index() {
-		return "redirect:pizzas";
+		return "front/homepage";
 	}
 
 }
