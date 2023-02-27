@@ -24,7 +24,7 @@ function pizzasList() {
                     <td>${pizza.description}</td>
                     <td><ul id="ingredients-list-${pizza.id}"></ul></td>
                     <td>${pizza.price}€</td>
-                    <td><a class="btn btn-danger" onclick="deletePizza(${pizza.id})"><i class="fa-solid fa-trash"></i></a></td>
+                    <td style="vertical-align: middle;"><a class="btn btn-danger" onclick="deletePizza(${pizza.id})"><i class="fa-solid fa-trash"></i></a></td>
                 </tr>`;
 
                 ingredients.forEach(ingredient => {
