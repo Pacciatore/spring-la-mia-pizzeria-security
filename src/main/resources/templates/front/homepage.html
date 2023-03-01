@@ -41,11 +41,25 @@
             </tbody>
         </table>
 
-        <a class="btn btn-primary" href="/create-pizza" sec:authorize="hasAuthority('ADMIN')">
-            Add a Pizza </a>
-
     </div>
 
+    <!-- Button navigation -->
+    <footer>
+        <div class="container d-flex flex-row-reverse py-3 justify-content-between">
+
+            <div class="d-flex flex-row-reverse gap-2">
+                <a class="btn btn-primary" href="/create-pizza" sec:authorize="hasAuthority('ADMIN')">
+                    Aggiungi Pizza </a>
+
+                <a class="btn btn-secondary" href="/logout">Logout</a>
+            </div>
+
+            <div>
+                <a class="btn btn-warning" href="/pizzas" sec:authorize="hasAuthority('ADMIN')">
+                    Passa alla schermata per amministratori </a>
+            </div>
+        </div>
+    </footer>
 
 
 </body>
