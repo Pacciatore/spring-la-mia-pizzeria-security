@@ -22,6 +22,8 @@
     <div class="container">
 
         Logged user: <span sec:authentication="name">xxx</span>
+        <!-- principal.authorities crea problemi quando riavvio il server e prova a caricare la
+             homepage SENZA aver fatto il login e NON mi reindirizza alla pagina di login -->
         Roles: <span sec:authentication="principal.authorities">yyy</span>
 
         <table class="table">
