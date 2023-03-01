@@ -20,6 +20,10 @@
     <header th:replace="~{fragments/content :: title('Pizzeria da Pedro')}"></header>
 
     <div class="container">
+
+        Logged user: <span sec:authentication="name">xxx</span>
+        Roles: <span sec:authentication="principal.authorities">yyy</span>
+
         <table class="table">
             <thead>
                 <tr>
@@ -36,7 +40,12 @@
 
             </tbody>
         </table>
+
+        <a class="btn btn-primary" href="/create-pizza" sec:authorize="hasAuthority('ADMIN')">
+            Add a Pizza </a>
+
     </div>
+
 
 
 </body>
