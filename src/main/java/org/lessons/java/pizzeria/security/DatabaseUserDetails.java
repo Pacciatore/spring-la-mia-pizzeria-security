@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public class DatabaseUserDetails implements UserDetails {
 
-	private static final Integer serialVersionUID = 1;
+	private static final long serialVersionUID = 1;
 
 	private final User user;
 
