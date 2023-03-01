@@ -14,10 +14,9 @@ public class SecurityConfiguration {
 
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http.authorizeHttpRequests().requestMatchers("/pizzas/create", "/pizzas/edit/**").hasAuthority("ADMIN")
+		http.authorizeHttpRequests().requestMatchers("/pizzas", "/pizzas/**").hasAuthority("ADMIN")
 				.requestMatchers(HttpMethod.POST, "/pizzas/**").hasAuthority("ADMIN")
-				.requestMatchers("/ingredient", "/ingredients/**").hasAuthority("ADMIN")
-				.requestMatchers("/pizzas", "/pizzas/**").hasAnyAuthority("USER", "ADMIN").requestMatchers("/**")
+				.requestMatchers("/ingredient", "/ingredients/**").hasAuthority("ADMIN").requestMatchers("/**")
 				.permitAll().and().formLogin().and().logout().and().exceptionHandling()
 				.accessDeniedPage("/access-denied.html");
 
