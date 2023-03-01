@@ -19,4 +19,9 @@ public class MainController {
 		return "front/show";
 	}
 
+	@GetMapping("/create-pizza")
+	public String create() {
+		return "front/create-pizza";
+	}
+
 }

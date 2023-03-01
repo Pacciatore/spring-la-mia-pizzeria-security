@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xlmns="https://thymeleaf.org">
+
+<head>
+
+    <title>Pizzeria da Pedro</title>
+
+    <th:block th:replace="~{fragments/head :: personal-head}" />
+
+    <!-- Link Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- Link a js/show.js -->
+    <script type="text/javascript" th:src="@{/js/create.js}" defer></script>
+
+</head>
+
+<body class="bg-light">
+
+    <h1 class="text-center py-3">Nuova pizza</h1>
+
+    <div class="container">
+
+        <form class="d-flex flex-column align-items-center gap-2 py-3" id="pizza-form" method="post"
+            onsubmit="createPizza(event)">
+
+            <!-- Nome Pizza -->
+            <div class="col-4">
+                <label class="form-label" for="pizzaName">Nome</label>
+                <input class="form-control" type="text" id="pizzaName">
+                <!-- <div th:if="${#fields.hasErrors('name')}" class="invalid-feedback">
+                    <p th:each="err : ${#fields.errors('name')}" th:text="${err}"></p>
+                </div> -->
+            </div>
+
+            <!-- Descrizione Pizza -->
+            <div class="col-4">
+                <label class="form-label" for="pizzaDescription">Descrizione</label>
+                <textarea class="form-control" id="pizzaDescription" rows="5" placeholder="(Facoltativo)"></textarea>
+                <!-- <div th:if="${#fields.hasErrors('description')}" class="invalid-feedback">
+                    <p th:each="err : ${#fields.errors('description')}" th:text="${err}"></p>
+                </div> -->
+            </div>
+
+            <!-- ImgURL Pizza -->
+            <div class="col-4">
+                <label class="form-label" for="pizzaImgUrl">Link all'immagine</label>
+                <input class="form-control" type="url" id="pizzaImgUrl" placeholder="(Facoltativo)">
+            </div>
+
+            <!-- Prezzo Pizza -->
+            <div class="col-4">
+                <label class="form-label" for="pizzaPrice">Prezzo</label>
+                <input class="form-control" type="number" step=".01" min="0" id="pizzaPrice">
+                <!-- <div th:if="${#fields.hasErrors('price')}" class="invalid-feedback">
+                    <p th:each="err : ${#fields.errors('price')}" th:text="${err}"></p>
+                </div> -->
+            </div>
+
+            <!-- Ingredienti Pizza -->
+            <div class="col-4">
+                <h3>Ingredienti:</h3>
+
+                <ul>
+                    <li>TODO</li>
+                </ul>
+
+            </div>
+
+            <!-- Button navigation -->
+            <div class="col-12 d-flex flex-row-reverse gap-2 py-3">
+
+                <a class="btn btn-primary" href="/">Torna alla homepage</a>
+
+                <input class="btn btn-success" type="submit" value="Crea pizza">
+
+            </div>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>
