@@ -1,5 +1,6 @@
 console.log('JS OK!');
 
+// TODO: Creare API per gli ingredienti per poterli ottenere con axios
 
 function createPizza(event) {
     event.preventDefault();
